@@ -7,12 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Générateur de mot de passe</h1>
-        <label for="length">Choisissez le nombre de caractères (12 à 128):</label>
-        <input type="number" id="length" min="12" max="128" value="12">
-        <button id="generate">Générer</button>
-        <div id="result"></div>
+    <header>
+        <h1>gPass.</h1>
+        <h6>Générez un mot de passe sécurisé en un clic !</h6>
+    </header>
+    <main>
+        <h2>Qu'est-ce que <u>gPass.</u>?</h2>
+        <div class="description">
+            <p>gPass. est un générateur de mot de passe en ligne qui vous aide à créer des mots de passe forts et uniques pour protéger vos comptes en ligne.</p>
+            <p>Avec gPass. vous pouvez choisir la longueur de votre mot de passe et générer un mot de passe aléatoire en quelques secondes.</p>
+            <p>Ne réutilisez pas le même mot de passe pour plusieurs comptes et changez régulièrement vos mots de passe pour une sécurité accrue.</p>
+        </div>
+        <div class="container">
+            <h2>Générez ci-dessous ⬇️</h2>
+            <label for="length">Choisissez le nombre de caractères (12 à 128):</label>
+            <input type="number" id="length" min="12" max="128" value="12">
+            <button id="generate">Générer</button> <br>
+            <button id="copy">Copier</button>
+            <button id="clear">Effacer</button>
+            <button id="import">Importer</button>
+            <label for="password">Votre mot de passe sécurisé :</label>
+            <div id="result"></div>
     </div>
     <script src="script.js"></script>
 </body>

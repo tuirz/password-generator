@@ -27,9 +27,9 @@ main {
 .container {
     max-width: 400px;
     margin: 60px auto;
-    background: var(--primary-color);
+    background: rgba(0, 229, 255, 0.484);
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 24px rgba(127, 244, 255, 0.797);
     padding: 32px 24px 24px 24px;
     text-align: center;
 }
@@ -64,7 +64,7 @@ header {
     flex: 1 1 200px;
     margin: 0;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(182, 47, 47, 0.1);
+    box-shadow: 0 2px 4px rgba(125, 255, 249, 0.901);
     padding: 18px 16px;
     color: var(--text-color);
     min-width: 180px;
@@ -98,7 +98,7 @@ input[type="number"] {
 }
 
 button {
-    background: var(--secondary-color);
+    background: black;
     color: var(--text-color)
     border: none;
     border-radius: 20px;

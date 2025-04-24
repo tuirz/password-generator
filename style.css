@@ -6,10 +6,11 @@
   --text-color: #ffffff;
   --blue-text-color: #00e5ff;
   --font-family: Segoe 'Arial', sans-serif;
+}
 
 body {
     background: black;
-    font-family: var(--font-family)
+    font-family: var(--font-family);
     padding: 0;
     margin: 0;
 }
@@ -27,7 +28,7 @@ main {
 .container {
     max-width: 400px;
     margin: 60px auto;
-    background: rgba(0, 229, 255, 0.484);
+    background: rgba(0, 229, 255, 0.179);
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(127, 244, 255, 0.797);
     padding: 32px 24px 24px 24px;
@@ -35,7 +36,7 @@ main {
 }
 
 header {
-    background: black
+    background: black;
     padding: 16px;
     border-radius: 1px 1px 0 0;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -43,13 +44,13 @@ header {
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
 .description {
-    color: var(--text-color);
+    color : var(--text-color);
+    font-family: var(--font-family);
     margin-bottom: 32px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -64,7 +65,7 @@ header {
     flex: 1 1 200px;
     margin: 0;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(125, 255, 249, 0.901);
+    box-shadow: 0 2px 4px rgba(125, 255, 248, 0.484);
     padding: 18px 16px;
     color: var(--text-color);
     min-width: 180px;
@@ -99,7 +100,7 @@ input[type="number"] {
 
 button {
     background: black;
-    color: var(--text-color)
+    color: var(--text-color);
     border: none;
     border-radius: 20px;
     padding: 10px 24px;

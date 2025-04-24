@@ -34,7 +34,7 @@ document.getElementById('generate').addEventListener('click', function() {
 
     // VERIFICATION DE LA LONGUEUR
     if (isNaN(length) || length < 12 || length > 128) {
-        resultDiv.textContent = "Please enter a length between 12 and 128.";
+        resultDiv.textContent = "Sélectionnez un nombre entre 12 et 128.";
         resultDiv.style.color = "red";
         return;
     }

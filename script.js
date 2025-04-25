@@ -43,6 +43,7 @@ document.getElementById('generate').addEventListener('click', function() {
     const password = generatePassword(length);
     resultDiv.textContent = password;
     resultDiv.style.color = "black";
+    checkPasswordStrength(password);
 });
 
 // BOUTON COPIER
@@ -61,4 +62,35 @@ document.getElementById('clear').addEventListener('click', function() {
     const resultDiv = document.getElementById('password');
     resultDiv.textContent = "";
     resultDiv.style.background = "";
+    // CLEAR FORCE WHEN CLICK CLEAR
+    document.getElementById('strength-fill').style.width = "0";
+    document.getElementById('strength-text').textContent = "";
 });
+
+// BARRE FORCE DU MDP
+function checkPasswordStrength(password) {
+    let hasLower = /[a-z]/.test(password);
+    let hasUpper = /[A-Z]/.test(password);
+    let hasNumber = /[0-9]/.test(password);
+    let hasSpecial = /[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password);
+
+    let color = "red", text = "Faible", width = "20%";
+
+    if (password.length >= 120 && hasLower && hasUpper && hasNumber && hasSpecial) {
+        color = "#00e676"; text = "Excellent"; width = "100%";
+    } else if (password.length >= 96) {
+        color = "green"; text = "Très fort"; width = "80%";
+    } else if (password.length >= 48) {
+        color = "yellow"; text = "Fort"; width = "60%";
+    } else if (password.length >= 24) {
+        color = "orange"; text = "Moyen"; width = "40%";
+    }
+
+    let fill = document.getElementById('strength-fill');
+    fill.style.width = width;
+    fill.style.background = color;
+
+    let strengthText = document.getElementById('strength-text');
+    strengthText.textContent = text;
+    strengthText.style.color = color;
+}

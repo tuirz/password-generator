@@ -44,6 +44,7 @@ document.getElementById('generate').addEventListener('click', function() {
     resultDiv.textContent = password;
     resultDiv.style.color = "black";
     checkPasswordStrength(password);
+    addToHistory(password);
 });
 
 // BOUTON COPIER
@@ -93,4 +94,19 @@ function checkPasswordStrength(password) {
     let strengthText = document.getElementById('strength-text');
     strengthText.textContent = text;
     strengthText.style.color = color;
+}
+
+// HISTORIQUE DES MDP
+let passwordHistory = JSON.parse(localStorage.getItem('passwordHistory') || '[]');
+
+function addToHistory(password) {
+    if (!password) return;
+    passwordHistory.unshift(password);
+    passwordHistory = passwordHistory.slice(0, 5);
+    localStorage.setItem('passwordHistory', JSON.stringify(passwordHistory)); // LOCAL SAVE F5 OK
+
+    const historyList = document.getElementById('history');
+    historyList.innerHTML = passwordHistory
+        .map(pwd => `<li style="word-break:break-all;background:#222;color:#00e5ff;padding:4px 8px;margin-bottom:6px;border-radius:6px;">${pwd}</li>`)
+        .join('');
 }

@@ -20,6 +20,12 @@
         </div>
         <div class="container">
             <h2>Générez ci-dessous ⬇️</h2>
+            <div style="margin: 16px 0;">
+                <label><input type="checkbox" id="lowercase" checked> Minuscules</label>
+                <label><input type="checkbox" id="uppercase" checked> Majuscules</label>
+                <label><input type="checkbox" id="numbers" checked> Chiffres</label>
+                <label><input type="checkbox" id="specials" checked> Caractères spéciaux</label>
+            </div>
             <label for="length">Choisissez le nombre de caractères (12 à 128):</label>
             <input type="number" id="length" min="12" max="128" value="12">
             <button id="generate">Générer</button> <br>

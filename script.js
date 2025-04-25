@@ -1,29 +1,17 @@
 // FONCTION GENERER MDP
 function generatePassword(length) {
-    const lower = "abcdefghijklmnopqrstuvwxyz";
-    const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numbers = "0123456789";
-    const specials = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    const sets = [
+        { chars: "abcdefghijklmnopqrstuvwxyz", use: document.getElementById('lowercase')?.checked },
+        { chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", use: document.getElementById('uppercase')?.checked },
+        { chars: "0123456789", use: document.getElementById('numbers')?.checked },
+{ chars: "!@#$%^&*()_+-=[]{}|;:,.<>?", use: document.getElementById('specials')?.checked }
+];
+let all = sets.filter(s => s.use).map(s => s.chars).join('');
+if (!all) return "";
+let pwd = sets.filter(s => s.use).map(s => s.chars[Math.floor(Math.random() * s.chars.length)]);
+for (let i = pwd.length; i < length; i++) pwd.push(all[Math.floor(Math.random() * all.length)]);
+return pwd.sort(() => Math.random() - 0.5).join('');
 
-    // INCLU TOUS LES CARACTERES
-    let allChars = lower + upper + numbers + specials;
-    let password = [
-        lower[Math.floor(Math.random() * lower.length)],
-        upper[Math.floor(Math.random() * upper.length)],
-        numbers[Math.floor(Math.random() * numbers.length)],
-        specials[Math.floor(Math.random() * specials.length)]
-    ];
-
-    // RESPECT DU NOMBRE DE CARACTERE 
-    for (let i = password.length; i < length; i++) {
-        password.push(allChars[Math.floor(Math.random() * allChars.length)]);
-    }
-
-    // MDP ALEATOIRE
-    password = password.sort(() => Math.random() - 0.5);
-
-    // MDP FINAL
-    return password.join('');
 }
 
 // BOUTON GENERER
@@ -103,10 +91,12 @@ function addToHistory(password) {
     if (!password) return;
     passwordHistory.unshift(password);
     passwordHistory = passwordHistory.slice(0, 5);
-    localStorage.setItem('passwordHistory', JSON.stringify(passwordHistory)); // LOCAL SAVE F5 OK
-
-    const historyList = document.getElementById('history');
-    historyList.innerHTML = passwordHistory
-        .map(pwd => `<li style="word-break:break-all;background:#222;color:#00e5ff;padding:4px 8px;margin-bottom:6px;border-radius:6px;">${pwd}</li>`)
+    localStorage.setItem('passwordHistory', JSON.stringify(passwordHistory));
+    const escape = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    document.getElementById('history').innerHTML = passwordHistory
+        .map(pwd => `<li style="word-break:break-all;background:#222;color:#00e5ff;padding:4px 8px;margin-bottom:6px;border-radius:6px;">${escape(pwd)}</li>`)
         .join('');
 }
+
+// AFFICHE L'HISTORIQUE AU CHARGEMENT
+window.addEventListener('DOMContentLoaded', () => addToHistory());
